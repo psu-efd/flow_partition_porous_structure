@@ -1,0 +1,6 @@
+SRHMON 30
+NUMMONITORPTS 4
+monitorpt 1 0 5
+monitorpt 2 2 5
+monitorpt 3 -2 5
+monitorpt 4 -2 5

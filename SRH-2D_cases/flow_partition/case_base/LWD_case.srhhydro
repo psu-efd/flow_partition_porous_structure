@@ -1,0 +1,26 @@
+SRHHYDRO 30
+Case "LWD_case"
+Description "Cd (obstruction) approach for LWD"
+RunType FLOW
+ModelTemp OFF
+UnsteadyOutput UNSTEADY
+SimTime 0.0 0.1 1.0
+TurbulenceModel PARABOLIC
+ParabolicTurbulence 0.7
+InitCondOption DRY
+Grid "LWD_case.srhgeom"
+HydroMat "LWD_case.srhmat"
+MonitorPtFile "LWD_case.srhmpoint"
+OutputFormat XMDFC SI
+OutputOption 1
+OutputInterval 0.5
+ManningsN 0 0.02
+ManningsN 1 0.02
+BC 1 INLET-Q
+BC 2 EXIT-H
+BC 3 MONITORING
+BC 4 MONITORING
+EWSParamsC 2 1.0 SI C
+IQParams 1 0.1142 SI CONVEYANCE
+NumDeckObstruction 1
+DeckParams 1 0.2 10.0 100.0 0.0 SI 0.0 1.6 0.0 0.0 -0.1 0.0

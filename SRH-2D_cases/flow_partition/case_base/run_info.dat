@@ -1,0 +1,121 @@
+
+
+ ************************************************************
+ *              Information of the Simulation Run           *
+ ************************************************************
+ 
+ *** Initializing parallelization
+ 
+ 	The is no specified number of cores on the command line. Use default (1 core).
+ 	No parallelization. SRH-2d is running in serial mode.
+ 	Number of CPU cores available:          12
+ 	Number of cores used by SRH-2D:           1
+ 
+ 
+ *** Finished initializing parallelization
+ 
+ 
+ *** Reading solver specifications
+ 
+    There is no les_solver_specs.dat file. Use default.
+ 	LES solver option:           2 Hypre               
+ 	hypre_print_level:           0
+ 	Hypre sover information:
+ 		Solver No.:            1 for H
+ 		hypre_precond_id:           2 boomerAMG
+ 		hypre_solver_id:           2 BiCGSTAB
+ 		hypre_max_iterations:        1000
+ 		hypre_tol:  1.000000000000000E-006
+ 		hypre_a_tol:  0.000000000000000E+000
+ 		nPrecondSetupIntervals:          -1
+ 		bPermutation: T
+ 
+ 		Solver No.:            2 for U
+ 		hypre_precond_id:           2 boomerAMG
+ 		hypre_solver_id:           2 BiCGSTAB
+ 		hypre_max_iterations:        1000
+ 		hypre_tol:  1.000000000000000E-006
+ 		hypre_a_tol:  0.000000000000000E+000
+ 		nPrecondSetupIntervals:          -1
+ 		bPermutation: F
+ 
+ 		Solver No.:            3 for V
+ 		hypre_precond_id:           2 boomerAMG
+ 		hypre_solver_id:           2 BiCGSTAB
+ 		hypre_max_iterations:        1000
+ 		hypre_tol:  1.000000000000000E-006
+ 		hypre_a_tol:  0.000000000000000E+000
+ 		nPrecondSetupIntervals:          -1
+ 		bPermutation: F
+ 
+ 		Solver No.:            4 for N_Wave
+ 		hypre_precond_id:           2 boomerAMG
+ 		hypre_solver_id:           2 BiCGSTAB
+ 		hypre_max_iterations:        1000
+ 		hypre_tol:  1.000000000000000E-004
+ 		hypre_a_tol:  0.000000000000000E+000
+ 		nPrecondSetupIntervals:          -1
+ 		bPermutation: F
+ 
+ 		Solver No.:            5 for E_sr
+ 		hypre_precond_id:           2 boomerAMG
+ 		hypre_solver_id:           2 BiCGSTAB
+ 		hypre_max_iterations:        1000
+ 		hypre_tol:  1.000000000000000E-004
+ 		hypre_a_tol:  0.000000000000000E+000
+ 		nPrecondSetupIntervals:          -1
+ 		bPermutation: F
+ 
+ 		Solver No.:            6 for Sediment
+ 		hypre_precond_id:           2 boomerAMG
+ 		hypre_solver_id:           3 boomerAMG
+ 		hypre_max_iterations:        1000
+ 		hypre_tol:  1.000000000000000E-006
+ 		hypre_a_tol:  0.000000000000000E+000
+ 		nPrecondSetupIntervals:          -1
+ 		bPermutation: F
+ 
+ 	bRead_runtime_input: F
+ 	bSedimentShareSolver: F
+ 	bTiming: F
+ 
+   There is no boomerAMG_specs.dat file for the boomerAMG preconditioner. Use default.
+		Hypre: boomerAMG_coarsen_type: 10 10 10 10 10 10
+		Hypre: boomerAMG_interp_type:  6  6  6  6  6  6
+		Hypre: boomerAMG_cycle_type:  1  1  1  1  1  1
+		Hypre: boomerAMG_relax_type: -3 -3 -3 -3 -3 -3
+		Hypre: boomerAMG_relax_order:  1  1  1  1  1  1
+		Hypre: boomerAMG_num_sweeps:  1  1  1  1  1  1
+		Hypre: boomerAMG_keep_transpose:  0  0  0  0  0  0
+		Hypre: boomerAMG_max_levels: 25 25 25 25 25 25
+		Hypre: boomerAMG_trunc_factor: 0.30 0.30 0.30 0.30 0.30 0.30
+		Hypre: boomerAMG_agg_num_levels:  0  0  0  0  0  0
+		Hypre: boomerAMG_agg_interp_type:  4  4  4  4  4  4
+		Hypre: boomerAMG_strong_threshold: 0.40 0.40 0.40 0.40 0.40 0.40
+		Hypre: boomerAMG_converge_type:  1  1  1  1  1  1
+ 
+ *** Finished reading solver specifications
+ 
+ *** Initializing Hypre
+ 	bPermutation calculation
+ 		SRH2D_mat_2_csr_no_sort ...
+ 		compute_permutation_vectors ...
+ 
+ 	Hypre: Creating parallel matrices and vectors ...
+ 		Hypre: Creating matrix A for H
+ 		Hypre: Creating vectors b and x for H
+ 		Hypre: Creating matrix A for U
+ 		Hypre: Creating vectors b and x for U
+ 		Hypre: Creating matrix A for V
+ 		Hypre: Creating vectors b and x for V
+ 
+ 	Hypre: Creating preconditioners and solvers ...
+ 		creating boomerAMG preconditioner for H
+ 		Creating BiCGSTAB solver for H
+ 		creating boomerAMG preconditioner for U
+ 		Creating BiCGSTAB solver for U
+ 		creating boomerAMG preconditioner for V
+ 		Creating BiCGSTAB solver for V
+ 
+ *** Finished initializing Hypre
+ 
