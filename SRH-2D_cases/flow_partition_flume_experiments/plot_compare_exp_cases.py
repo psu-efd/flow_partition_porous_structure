@@ -16,7 +16,7 @@ plt.rc('text', usetex=True)  #allow the use of Latex for math expressions and eq
 plt.rc('font', family='serif') #specify the default font family to be "serif"
 
 def plot_contour_from_vtk(case_ID, Fr, beta, Cd, alpha_exp, alpha_simple, rect_x, rect_y, rect_width, rect_height, vtkFileName,
-                          U_all, x_positions, y_positions):
+                          U_all, V_all, x_positions, y_positions):
 
     #load data from vtk file: water depht and velocity
 
@@ -119,8 +119,8 @@ def plot_contour_from_vtk(case_ID, Fr, beta, Cd, alpha_exp, alpha_simple, rect_x
         # Plot the profile
         for iPoint in range(nPoints):
             #plot velocity from experiment
-            plt.arrow(coords_at_points[iPoint, 0], coords_at_points[iPoint, 1], U_all[iProfile][iPoint], 0, linewidth=2, head_width=0.04, head_length=0.02, fc='blue', ec='blue', length_includes_head=True)
-            plt.plot(coords_at_points[iPoint, 0] + U_all[iProfile][iPoint] + 0.01, coords_at_points[iPoint, 1], 'ko', markersize=4)  # Smaller dot (size 4) to the right of the arrow tip
+            plt.arrow(coords_at_points[iPoint, 0], coords_at_points[iPoint, 1], U_all[iProfile][iPoint], V_all[iProfile][iPoint], linewidth=2, head_width=0.04, head_length=0.02, fc='blue', ec='blue', length_includes_head=True)
+            plt.plot(coords_at_points[iPoint, 0] + U_all[iProfile][iPoint] + 0.01, coords_at_points[iPoint, 1] + V_all[iProfile][iPoint]+0.01, 'ko', markersize=4)  # Smaller dot (size 4) to the right of the arrow tip
 
             #plot SRH-2D velocity
             plt.arrow(coords_at_points[iPoint, 0], coords_at_points[iPoint, 1],
@@ -136,7 +136,8 @@ def plot_contour_from_vtk(case_ID, Fr, beta, Cd, alpha_exp, alpha_simple, rect_x
         plt.text(-3.75, 0.8, "0.5 m/s", color="black", fontsize=36, horizontalalignment='center',)
 
         dot_x_positions1 = [x_positions[iProfile] + value + 0.01 for value in U_all[iProfile]]
-        plt.plot(dot_x_positions1, y_positions[iProfile], 'k-', linewidth=1)  # Curve connecting the dots for profile
+        dot_y_positions1 = [y_position            + value + 0.01 for y_position, value in zip(y_positions[iProfile], V_all[iProfile])]
+        plt.plot(dot_x_positions1, dot_y_positions1, 'k-', linewidth=1)  # Curve connecting the dots for profile
         plt.plot([x_positions[iProfile], x_positions[iProfile]], [y_positions[iProfile][0], y_positions[iProfile][-1]], 'k--',
                  linewidth=1)  # Dotted vertical line for profile
 
@@ -183,6 +184,12 @@ if __name__ == "__main__":
     U1_case2 = [0.2058, 0.197, 0.17086, 0.22468, 0.23558]    # Experiment 2
     U1_case3 = [0.260867, 0.200533, 0.174933, 0.211233, 0.202233]    # Experiment 3
     U1_case4 = [0.346067, 0.2741, 0.2496, 0.2393, 0.216467]  # Experiment 4
+
+    V1_case1 = [-0.01822, -0.0734914, -0.0115, -0.01358, -0.02114]  # Experiment 1
+    V1_case2 = [-0.01636, -0.01504, -0.01362, -0.0178, -0.02352]  # Experiment 2
+    V1_case3 = [-0.027733333, -0.013133333, -0.012066667, -0.020966667, -0.0282]  # Experiment 3
+    V1_case4 = [-0.038433333, -0.025133333, -0.014466667, -0.018266667,	-0.0255]  # Experiment 4
+
     y_positions1 = [0.15, 0.45, 0.75, 1.05, 1.35]  # Adjusted y-positions for 0.3 m spacing
 
     # Second set of values (upstream 36 inches = - 0.91 m)
@@ -190,6 +197,12 @@ if __name__ == "__main__":
     U2_case2 = [0.18392, 0.18488, 0.18582, 0.22472, 0.25718]    # Experiment 2
     U2_case3 = [0.212133, 0.1949, 0.193467, 0.217833, 0.246067]    # Experiment 3
     U2_case4 = [0.2819, 0.266133, 0.253, 0.2675, 0.270133]  # Experiment 4
+
+    V2_case1 = [-0.00802, 0.0048, 0.0066, -0.00118,	-0.01444]  # Experiment 1
+    V2_case2 = [-0.00904, 0.00302, 0.00404, -0.0015, -0.02062]  # Experiment 2
+    V2_case3 = [-0.0092, 0.007466667, 0.015166667, 0.002433333, -0.016266667]  # Experiment 3
+    V2_case4 = [-0.0149, 0.014666667, 0.0213, 0.012433333, -0.0179]  # Experiment 4
+
     y_positions2 = y_positions1  # Same y-positions for consistency
 
     # Third set of values (only three values, with the first two removed, obstruction 00 inches = 0 m)
@@ -197,13 +210,27 @@ if __name__ == "__main__":
     U3_case2 = [0.2494, 0.38214, 0.39144]    # Experiment 2
     U3_case3 = [0.200967, 0.418833, 0.405733]    # Experiment 3
     U3_case4 = [0.244933, 0.538833, 0.4994]  # Experiment 4
+
+    V3_case1 = [0.09452, 0.05096, -0.00928]  # Experiment 1
+    V3_case2 = [0.11236, 0.07786, -0.00976]  # Experiment 2
+    V3_case3 = [0.109333333, 0.097666667, -0.006533333]  # Experiment 3
+    V3_case4 = [0.1177, 0.1269, -0.002366667]  # Experiment 4
+
     y_positions3 = y_positions1[2:]  # Keeping the positions for the remaining three arrows
+    #The y-position of the measurement near the LWD is about 7.5 cm
+    y_positions3[0] += 0.075
 
     # Fourth set of values (downstream 36 inches = 0.91 m)
     U4_case1 = [0.03402, 0.03252, 0.01858, 0.36968, 0.38428]     # Experiment 1
     U4_case2 = [0.04048, 0.04312, 0.02374, 0.46876, 0.48606]     # Experiment 2
     U4_case3 = [0.0391, 0.042566667, 0.021133, 0.5168, 0.522]     # Experiment 3
     U4_case4 = [0.062, 0.063933, 0.028133, 0.671933, 0.672167]  # Experiment 4
+
+    V4_case1 = [0.00276, 0.01066, 0.00168, -0.03852, -0.04328]  # Experiment 1
+    V4_case2 = [0.0019, 0.01324, 0.0074, -0.0425, -0.05222]  # Experiment 2
+    V4_case3 = [0.0051, 0.0165, 0.008466667, -0.059166667, -0.059833333]  # Experiment 3
+    V4_case4 = [0.009, 0.024666667, 0.010666667, -0.0726, -0.069333333]  # Experiment 4
+
     y_positions4 = y_positions1  # Same y-positions for consistency
 
     # Fifth set of values (downstream 72 inches = 1.83 m)
@@ -211,6 +238,12 @@ if __name__ == "__main__":
     U5_case2 = [0.0285, 0.02416, 0.09756, 0.42988, 0.48924]     # Experiment 2
     U5_case3 = [0.0326, 0.033467, 0.111133, 0.4688, 0.529433]     # Experiment 3
     U5_case4 = [0.0514, 0.04067, 0.128533, 0.6009, 0.6785]  # Experiment 4
+
+    V5_case1 = [0.01034, 0.015, -0.00512, -0.04126, -0.04626]  # Experiment 1
+    V5_case2 = [0.00714, 0.02282, -0.00286, -0.06278, -0.0606]  # Experiment 2
+    V5_case3 = [0.0046, 0.012266667, -0.0052, -0.067833333, -0.0703]  # Experiment 3
+    V5_case4 = [0.003866667, 0.015866667, 0.004066667, -0.0838, -0.090966667]  # Experiment 4
+
     y_positions5 = y_positions1  # Same y-positions for consistency
 
     #put all the exp. data together
@@ -219,6 +252,13 @@ if __name__ == "__main__":
     U3s = [U3_case1, U3_case2, U3_case3, U3_case4]
     U4s = [U4_case1, U4_case2, U4_case3, U4_case4]
     U5s = [U5_case1, U5_case2, U5_case3, U5_case4]
+
+    V1s = [V1_case1, V1_case2, V1_case3, V1_case4]
+    V2s = [V2_case1, V2_case2, V2_case3, V2_case4]
+    V3s = [V3_case1, V3_case2, V3_case3, V3_case4]
+    V4s = [V4_case1, V4_case2, V4_case3, V4_case4]
+    V5s = [V5_case1, V5_case2, V5_case3, V5_case4]
+    
     x_positions = [-1.83, -0.91, 0, 0.91, 1.83]
     y_positions = [y_positions1, y_positions2, y_positions3, y_positions4, y_positions5]
 
@@ -232,6 +272,8 @@ if __name__ == "__main__":
 
         vtkFileName = "Exp_"+str(case_ID)+"_Cd/case_final/SRH2D_Exp_"+str(case_ID)+"_Cd_C_0003"".vtk"
         plot_contour_from_vtk(case_ID, Frs[i], betas[i], Cds[i], alphas_exp[i], alphas_simple[i], rect_x, rect_y, rect_width, rect_height, vtkFileName,
-                              [U1s[i], U2s[i], U3s[i], U4s[i], U5s[i]], x_positions, y_positions)
+                              [U1s[i], U2s[i], U3s[i], U4s[i], U5s[i]],
+                              [V1s[i], V2s[i], V3s[i], V4s[i], V5s[i]],
+                              x_positions, y_positions)
 
     print("All done!")
