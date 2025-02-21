@@ -14,6 +14,7 @@ This repository has the solution scripts and simulation cases for the paper "Flo
 
 ```bash
 git clone https://github.com/psu-efd/flow_partition_porous_structure.git
+cd flow_partition_porous_structure
 ```
 
 ### Create a conda environment
@@ -34,11 +35,29 @@ pip install git+https://github.com/psu-efd/pyHMT2D.git
 
 The SRH-2D simulation cases are in the `SRH-2D_cases` folder, which has two subfolders: `flow_partition` and `flow_partition_flume_experiments`. The `flow_partition` folder contains the 1,000 simulation cases which sweep the parameter space spanned by $\alpha$, $Fr$, and $\beta$. The `flow_partition_flume_experiments` folder contains the simulation cases for the four flume experiments. To calibrate the drag coefficient $C_d$ for the flume experiments, we use the Gaussian Process optimization. 
 
-### Python scripts
+## Python scripts
 
 The main Python script for this work is in the `scripts` folder named `flow_partition_porous_structure.py`. This script contains the following main functions:
 
 - solve the simple model described in the paper
 - make various plots shown in the paper
 
+## License
 
+MIT License
+
+## Contact
+
+Xiaofeng Liu, Ph.D., P.E.
+
+Department of Civil and Environmental Engineering
+
+Institute of Computational and Data Sciences
+
+Penn State University
+
+Web: https://water.engr.psu.edu/liu/
+
+Email: xiaofengliu19@gmail.com
+
+For questions and support, please open an issue in the repository.
