@@ -93,7 +93,7 @@ def plot_contour_from_vtk(case_ID, Fr, beta, Cd, alpha_exp, alpha_simple, rect_x
 
     cbar.set_ticks(tick_positions)  # Apply custom ticks
     cbar.ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
-    cbar.ax.tick_params(labelsize=40)  # Set tick font size
+    cbar.ax.tick_params(labelsize=60)  # Set tick font size
 
     #plot velocity vectors from experiments
 
@@ -133,7 +133,7 @@ def plot_contour_from_vtk(case_ID, Fr, beta, Cd, alpha_exp, alpha_simple, rect_x
                   head_width=0.04, head_length=0.02, fc='black', ec='black',
                   linewidth=2, length_includes_head=True)
 
-        plt.text(-3.75, 0.8, "0.5 m/s", color="black", fontsize=36, horizontalalignment='center',)
+        plt.text(-3.75, 0.8, "0.5 m/s", color="black", fontsize=48, horizontalalignment='center',)
 
         dot_x_positions1 = [x_positions[iProfile] + value + 0.01 for value in U_all[iProfile]]
         dot_y_positions1 = [y_position            + value + 0.01 for y_position, value in zip(y_positions[iProfile], V_all[iProfile])]
@@ -149,16 +149,16 @@ def plot_contour_from_vtk(case_ID, Fr, beta, Cd, alpha_exp, alpha_simple, rect_x
     ax.set_xlim(xi.min(), xi.max())
     ax.set_ylim(yi.min(), yi.max())
 
-    ax.set_xlabel("x (m)", fontsize=48)
-    ax.set_ylabel("y (m)", fontsize=48)
+    ax.set_xlabel("x (m)", fontsize=64)
+    ax.set_ylabel("y (m)", fontsize=64)
 
-    ax.tick_params(axis='x', labelsize=40)
-    ax.tick_params(axis='y', labelsize=40)
+    ax.tick_params(axis='x', labelsize=60)
+    ax.tick_params(axis='y', labelsize=60)
 
     #ax.set_title(rf"$Fr$ = {Fr:.2f}, $\beta$ = {beta:.2f}, $C_d$ = {Cd:.2f}, $\alpha_{{SRH-2D}}$ = {alpha_SRH_2D:.2f}, $\alpha_{{simple}}$ = {alpha_simple:.2f}", fontsize=52)
     ax.set_title(
         rf"$Fr$ = {Fr:.3f}, $\beta$ = {beta:.2f}, $C_d$ = {Cd:.1f}, $\alpha_{{exp}}$ = {alpha_exp:.3f}, $\alpha_{{simple}}$ = {alpha_simple:.3f}",
-        fontsize=52)
+        fontsize=64)
 
     # Show the customized plot
     plt.tight_layout()

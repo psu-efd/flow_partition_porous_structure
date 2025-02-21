@@ -178,7 +178,7 @@ def collect_result_from_all_cases():
                 iCase += 1
 
     # Save arrays in a .npz file (compressed)
-    np.savez_compressed('Fr_beta_C_A_h2prime_h2_alpha_arrays_SRH_2D.npz',
+    np.savez_compressed('Fr_beta_C_d_h2prime_h2_alpha_arrays_SRH_2D.npz',
                         iCases=iCases_results,
                         Frs=Frs, betas=betas, Cds=Cds,
                         h2prime=h2prime_results, h2=h2_results, alpha=alpha_results, bSuccess=bSuccess_results)
@@ -229,7 +229,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process a number from the command line.")
 
     #generate the parameters for all the cases
-    #generate_case_parameters()
+    generate_case_parameters()
 
     #run cases in serial
     run_cases(1, bParallel=False)
@@ -245,9 +245,9 @@ if __name__ == "__main__":
     #run_cases(nCPUs, bParallel=True)
 
     #collect diverged cases
-    #collect_diverged_cases()
+    collect_diverged_cases()
 
     #collect results from all cases
-    #collect_result_from_all_cases()
+    collect_result_from_all_cases()
 
     print("All done!")
